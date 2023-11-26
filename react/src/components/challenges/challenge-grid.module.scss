@@ -1,60 +1,87 @@
 .challengeGrid {
-  grid-gap: 1.5rem;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 2rem 0;
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1.5rem;
+  margin: 2rem 0;
+}
 
-  div {
-    position: relative;
-    overflow: hidden;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.15);
-    transition: all 0.2s ease-in-out;
-  }
+.challengeCard {
+  position: relative;
+  padding: 10px;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid rgb(0 0 0 / 15%);
+  box-shadow: 0 6px 8px 0 rgb(0 0 0 / 15%);
+  transition: all 0.2s ease-in-out;
 
-  div:hover {
-    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.3);
+  &:hover {
+    box-shadow: 0 6px 8px 0 rgb(0 0 0 / 30%);
     transform: scale(1.05);
   }
 
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    padding: 10px;
-    color: chocolate;
-    font-size: 1.25rem;
-    text-decoration: none;
+  .avatarContainer > *:not(:first-child) {
+    margin-top: 0.5rem;
+  }
 
-    &[class="disabled"] {
-      color: grey;
-      cursor: not-allowed;
-    }
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: green;
+  }
+
+  &.disabled h3 {
+    color: grey;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    box-shadow: 0 3px 4px 0 rgb(0 0 0 / 10%);
+  }
+
+  &.disabled:hover {
+    transform: scale(1);
+  }
+
+  a {
+    color: chocolate;
+    text-decoration: none;
   }
 
   .new {
     position: absolute;
-    top: 0.75rem;
-    right: -1.75rem;
-    width: 6rem;
-    color: white;
+    top: 0;
+    right: 0;
+    width: 4rem;
     font-size: 1rem;
+    color: white;
     text-align: center;
-    background: red;
-    transform: rotate(45deg);
+    background-color: rgb(84 84 84);
   }
 
-  @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
+  .developer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: black;
+
+    & > img {
+      width: 25px;
+      height: 25px;
+      margin-right: 0.5rem;
+      border-radius: 50%;
+    }
   }
 
-  @media screen and (min-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
+  .name {
+    color: black;
   }
 
-  @media screen and (min-width: 1400px) {
-    grid-template-columns: repeat(5, 1fr);
+  &.medium h3 {
+    color: rgb(75 75 255);
+  }
+
+  &.hard h3 {
+    color: orangered;
   }
 }

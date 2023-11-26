@@ -1,27 +1,36 @@
 import { challenges } from './challenges.js';
 
-const challengeLink = window.location.pathname.split('mc/')[1].slice(0, -1);
-const challenge = challenges.find(challenge => challenge.link === challengeLink);
+// Add navbar script
+const navbarScript = document.createElement('script');
+navbarScript.src = '../../helpers/navbar.js';
+navbarScript.type = 'module';
 
-const nav = document.createElement('nav');
-nav.className = 'global-nav';
-const home = document.createElement('a');
-const h1 = document.createElement('h1');
-const repo = document.createElement('a');
-const img = document.createElement('img');
-img.src = 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png';
-img.classList.add('github-img');
+// Add style tag
+const coreStyles = document.createElement('link');
+coreStyles.setAttribute('rel', 'stylesheet');
+coreStyles.setAttribute('href', '../../helpers/core.css');
 
-home.textContent = 'Home';
-h1.textContent = challenge.title;
-home.href = '/frontend-mini-challenges/';
-repo.href = 'https://github.com/sadanandpai/frontend-mini-challenges/';
-repo.target = '_blank';
+const metaUTF = document.createElement('meta');
+metaUTF.setAttribute('charset', 'UTF-8');
 
-repo.appendChild(img);
-nav.appendChild(home);
-nav.appendChild(h1);
-nav.appendChild(repo);
+const metaName = document.createElement('meta');
+metaName.setAttribute('name', 'viewport');
+metaName.setAttribute('content', 'width=device-width, initial-scale=1.0');
 
-document.body.prepend(nav);
+const metaHTTP = document.createElement('meta');
+metaHTTP.setAttribute('http-equiv', 'X-UA-Compatible');
+metaHTTP.setAttribute('content', 'IE=edge');
+
+const favIcon = document.createElement('link');
+favIcon.setAttribute('rel', 'icon');
+favIcon.setAttribute('type', 'image/svg+xml');
+favIcon.setAttribute('href', '../../logo.svg');
+
+// Add all tagsto the head
+const headTags = [navbarScript, coreStyles, metaUTF, metaName, metaHTTP, favIcon];
+headTags.forEach((tag) => document.head.prepend(tag));
+
+// Add title
+const challengeLink = window.location.pathname.split('machine-coding/')[1].slice(0, -1);
+const challenge = challenges.find((challenge) => challenge.link === challengeLink);
 document.title = challenge.title;

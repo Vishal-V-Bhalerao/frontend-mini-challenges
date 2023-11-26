@@ -22,8 +22,9 @@
     "noImplicitAny": false,
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["vitest/globals"]
   },
-  "include": ["src"],
+  "include": ["src", "setup.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
